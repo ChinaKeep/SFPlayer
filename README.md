@@ -1,6 +1,17 @@
 # SFPlayer
 ###一个基于AVFoundation的简易视频播放器，适合于简单视频播放和需要自定义播放器的项目
+##### 使用方法
+```
+/// 播放或者暂停
+- (void)playOrPause;
+/// 播放器释放
+- (void)destructPlayer;
+/// videoURL 视频路径
+@property (nonatomic, strong)           NSString                                 * videoURL;
+/** 视频的回调 */
+@property (nonatomic, copy)             SFVideoCompletedPlayingBlock             completedPlayingBlock;
 
+```
 - 小屏播放
 ![小屏播放](B6E72FD36244D4CDB2604A39ADB7CA47.png)
 
