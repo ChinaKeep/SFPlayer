@@ -19,6 +19,9 @@
 - (void)setVideoModel:(SFVideoModel *)videoModel{
     _videoModel = videoModel;
     [self.videoImageView sd_setImageWithURL:[NSURL URLWithString:videoModel.cover]];
+    self.titleLbl.text = videoModel.title;
+    self.count.text = videoModel.replyCount;
+    
 }
 
 @end

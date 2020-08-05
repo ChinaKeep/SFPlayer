@@ -41,7 +41,6 @@ UITableViewDataSource
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"SFVideoCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"SFVideoCell"];
-    self.tableView.estimatedRowHeight = 200;
     [self.view addSubview:self.tableView];
     
     
@@ -73,17 +72,6 @@ UITableViewDataSource
     cell.videoImageView.tag = indexPath.row + 100;
     return cell;
 }
-
-#pragma mark - UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    XLVideoItem *item = self.videoArray[indexPath.row];
-//    VideoDetailViewController *videoDetailViewController = [[VideoDetailViewController alloc] init];
-//    videoDetailViewController.videoTitle = item.title;
-//    videoDetailViewController.mp4_url = item.mp4_url;
-//    [self.navigationController pushViewController:videoDetailViewController animated:YES];
-}
 - (void)showVideoPlayer:(UIGestureRecognizer *)tapGesture{
     [self.player destructPlayer];
     self.player = nil;
@@ -93,9 +81,18 @@ UITableViewDataSource
     self.player = [[SFPlayer alloc]init];
     self.player.videoURL = videoModel.mp4_url;
     self.player.frame = tapGesture.view.bounds;
+    self.player.superTableView = self.tableView;
+    self.player.currentIndexPath = [NSIndexPath indexPathForRow:tapGesture.view.tag - 100 inSection:0];
     [cell.contentView addSubview:self.player];
     
 }
+#pragma mark --- UIScrollViewDelegate ---
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if ([scrollView isEqual:self.tableView]) {
+        [self.player playingVideoWithSamllWindow:YES];
+    }
+}
+
 - (NSMutableArray *)videoArray {
     if (!_videoArray) {
         _videoArray = [NSMutableArray array];

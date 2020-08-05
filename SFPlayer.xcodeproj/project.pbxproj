@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1820B77D24D9702D007C3362 /* SFSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820B77424D9702C007C3362 /* SFSlider.m */; };
+		1820B77E24D9702D007C3362 /* SFBottonBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1820B77724D9702C007C3362 /* SFBottonBarView.m */; };
+		1820B78024D9702D007C3362 /* ImageResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1820B77924D9702D007C3362 /* ImageResources.bundle */; };
 		186042C424D425F2008EC3A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 186042C324D425F2008EC3A2 /* AppDelegate.m */; };
 		186042CA24D425F2008EC3A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186042C924D425F2008EC3A2 /* ViewController.m */; };
 		186042CD24D425F2008EC3A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186042CB24D425F2008EC3A2 /* Main.storyboard */; };
@@ -16,12 +19,9 @@
 		186042DF24D425F7008EC3A2 /* SFPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 186042DE24D425F7008EC3A2 /* SFPlayerTests.m */; };
 		186042EA24D425F7008EC3A2 /* SFPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 186042E924D425F7008EC3A2 /* SFPlayerUITests.m */; };
 		186042F924D42758008EC3A2 /* SFPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 186042F824D42758008EC3A2 /* SFPlayer.m */; };
-		1874D98724D7AFC700FC64CC /* ImageResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1874D98624D7AFC700FC64CC /* ImageResources.bundle */; };
-		1874D98A24D7B00300FC64CC /* SFSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874D98924D7B00300FC64CC /* SFSlider.m */; };
 		1874D98D24D7FC9200FC64CC /* SFVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874D98C24D7FC9200FC64CC /* SFVideoModel.m */; };
 		1874D99124D7FE0C00FC64CC /* SFVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874D98F24D7FE0C00FC64CC /* SFVideoCell.m */; };
 		1874D99224D7FE0C00FC64CC /* SFVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1874D99024D7FE0C00FC64CC /* SFVideoCell.xib */; };
-		1874D99524D813E100FC64CC /* SFBottonBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1874D99424D813E100FC64CC /* SFBottonBarView.m */; };
 		4ACC8E932693F393679514B3 /* libPods-SFPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 674760C58EA11AC7BF00CE8C /* libPods-SFPlayer.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1820B77424D9702C007C3362 /* SFSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSlider.m; sourceTree = "<group>"; };
+		1820B77724D9702C007C3362 /* SFBottonBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBottonBarView.m; sourceTree = "<group>"; };
+		1820B77924D9702D007C3362 /* ImageResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ImageResources.bundle; sourceTree = "<group>"; };
+		1820B77C24D9702D007C3362 /* SFBottonBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBottonBarView.h; sourceTree = "<group>"; };
+		1820B78224D97061007C3362 /* SFPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlayer.h; sourceTree = "<group>"; };
 		186042BF24D425F2008EC3A2 /* SFPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		186042C224D425F2008EC3A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		186042C324D425F2008EC3A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -59,18 +64,13 @@
 		186042E524D425F7008EC3A2 /* SFPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		186042E924D425F7008EC3A2 /* SFPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPlayerUITests.m; sourceTree = "<group>"; };
 		186042EB24D425F7008EC3A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		186042F724D42758008EC3A2 /* SFPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFPlayer.h; sourceTree = "<group>"; };
 		186042F824D42758008EC3A2 /* SFPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFPlayer.m; sourceTree = "<group>"; };
-		1874D98624D7AFC700FC64CC /* ImageResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ImageResources.bundle; sourceTree = "<group>"; };
 		1874D98824D7B00300FC64CC /* SFSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSlider.h; sourceTree = "<group>"; };
-		1874D98924D7B00300FC64CC /* SFSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSlider.m; sourceTree = "<group>"; };
 		1874D98B24D7FC9200FC64CC /* SFVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFVideoModel.h; sourceTree = "<group>"; };
 		1874D98C24D7FC9200FC64CC /* SFVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFVideoModel.m; sourceTree = "<group>"; };
 		1874D98E24D7FE0C00FC64CC /* SFVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFVideoCell.h; sourceTree = "<group>"; };
 		1874D98F24D7FE0C00FC64CC /* SFVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFVideoCell.m; sourceTree = "<group>"; };
 		1874D99024D7FE0C00FC64CC /* SFVideoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SFVideoCell.xib; sourceTree = "<group>"; };
-		1874D99324D813E100FC64CC /* SFBottonBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFBottonBarView.h; sourceTree = "<group>"; };
-		1874D99424D813E100FC64CC /* SFBottonBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFBottonBarView.m; sourceTree = "<group>"; };
 		3B0DC1342B4D29D48ED7CD38 /* Pods-SFPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFPlayer.release.xcconfig"; path = "Target Support Files/Pods-SFPlayer/Pods-SFPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		674760C58EA11AC7BF00CE8C /* libPods-SFPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SFPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B854D77E63CC53EC8FF8622A /* Pods-SFPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFPlayer.debug.xcconfig"; path = "Target Support Files/Pods-SFPlayer/Pods-SFPlayer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +102,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1823AF9A24DA53DC00C2128F /* SFVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1874D98824D7B00300FC64CC /* SFSlider.h */,
+				1820B77424D9702C007C3362 /* SFSlider.m */,
+				1874D98B24D7FC9200FC64CC /* SFVideoModel.h */,
+				1874D98C24D7FC9200FC64CC /* SFVideoModel.m */,
+				1820B77924D9702D007C3362 /* ImageResources.bundle */,
+				1820B77C24D9702D007C3362 /* SFBottonBarView.h */,
+				1820B77724D9702C007C3362 /* SFBottonBarView.m */,
+				1820B78224D97061007C3362 /* SFPlayer.h */,
+				186042F824D42758008EC3A2 /* SFPlayer.m */,
+			);
+			path = SFVideoPlayer;
+			sourceTree = "<group>";
+		};
 		186042B624D425F2008EC3A2 = {
 			isa = PBXGroup;
 			children = (
@@ -134,16 +150,8 @@
 				1874D98E24D7FE0C00FC64CC /* SFVideoCell.h */,
 				1874D98F24D7FE0C00FC64CC /* SFVideoCell.m */,
 				1874D99024D7FE0C00FC64CC /* SFVideoCell.xib */,
-				1874D98B24D7FC9200FC64CC /* SFVideoModel.h */,
-				1874D98C24D7FC9200FC64CC /* SFVideoModel.m */,
-				186042F724D42758008EC3A2 /* SFPlayer.h */,
-				186042F824D42758008EC3A2 /* SFPlayer.m */,
-				1874D99324D813E100FC64CC /* SFBottonBarView.h */,
-				1874D99424D813E100FC64CC /* SFBottonBarView.m */,
-				1874D98824D7B00300FC64CC /* SFSlider.h */,
-				1874D98924D7B00300FC64CC /* SFSlider.m */,
-				1874D98624D7AFC700FC64CC /* ImageResources.bundle */,
 				186042CB24D425F2008EC3A2 /* Main.storyboard */,
+				1823AF9A24DA53DC00C2128F /* SFVideoPlayer */,
 				186042CE24D425F7008EC3A2 /* Assets.xcassets */,
 				186042D024D425F7008EC3A2 /* LaunchScreen.storyboard */,
 				186042D324D425F7008EC3A2 /* Info.plist */,
@@ -295,7 +303,7 @@
 				186042CF24D425F7008EC3A2 /* Assets.xcassets in Resources */,
 				186042CD24D425F2008EC3A2 /* Main.storyboard in Resources */,
 				1874D99224D7FE0C00FC64CC /* SFVideoCell.xib in Resources */,
-				1874D98724D7AFC700FC64CC /* ImageResources.bundle in Resources */,
+				1820B78024D9702D007C3362 /* ImageResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +354,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				186042CA24D425F2008EC3A2 /* ViewController.m in Sources */,
-				1874D98A24D7B00300FC64CC /* SFSlider.m in Sources */,
+				1820B77E24D9702D007C3362 /* SFBottonBarView.m in Sources */,
+				1820B77D24D9702D007C3362 /* SFSlider.m in Sources */,
 				1874D98D24D7FC9200FC64CC /* SFVideoModel.m in Sources */,
-				1874D99524D813E100FC64CC /* SFBottonBarView.m in Sources */,
 				186042C424D425F2008EC3A2 /* AppDelegate.m in Sources */,
 				1874D99124D7FE0C00FC64CC /* SFVideoCell.m in Sources */,
 				186042D524D425F7008EC3A2 /* main.m in Sources */,

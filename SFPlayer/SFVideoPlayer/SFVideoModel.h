@@ -11,14 +11,17 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SFVideoModel : NSObject
+
 @property (nonatomic, copy)           NSString          *title;
 @property (nonatomic, copy)           NSString          *playCount;
 @property (nonatomic, copy)           NSString          *mp4_url;
 @property (nonatomic, copy)           NSString          *m3u8Hd_url;
 @property (nonatomic, copy)           NSString          *topicImg;
 @property (nonatomic, copy)           NSString          *cover;
+@property (nonatomic, copy)           NSString          *replyCount;
 
 
 @end
 
 NS_ASSUME_NONNULL_END
+

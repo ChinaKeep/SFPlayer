@@ -40,7 +40,8 @@
 @property (nonatomic, assign)           BOOL                    bottomBarHidden;
 /** 是否在拖拽滑竿*/
 @property (nonatomic, assign)           BOOL                    inOperation;
-
+/** 当前播放的单元格的Frame*/
+@property (nonatomic, assign)           CGRect                  currentPlayCellRect;
 
 @end
 
@@ -60,6 +61,10 @@
         //初始化隐藏控制器
         self.bottomBarHidden = YES;
         //进去前后台的监听
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
         
     }
     return self;
@@ -254,6 +259,11 @@
     self.bottonBarView.fullScreenBtn.selected = NO;
     
     [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIDeviceOrientationPortrait] forKey:@"orientation"];
+    //小屏播放时，设置视频的位置
+    if (self.superTableView) {
+        UITableViewCell *cell = [self.superTableView cellForRowAtIndexPath:self.currentIndexPath];
+        [cell.contentView addSubview:self];
+    }
     
     [UIView animateWithDuration:0.3 animations:^{
         self.transform = CGAffineTransformMakeRotation(0);
@@ -264,6 +274,82 @@
         [self updateConstraintsIfNeeded];
     }];
     [self setStatusBarHidden:NO];
+}
+#pragma mark --- 调整播放窗口 ---
+- (void)playingVideoWithSamllWindow:(BOOL)support{
+    self.currentPlayCellRect = [self.superTableView rectForRowAtIndexPath:self.currentIndexPath];
+    
+    CGFloat cellBottom = self.currentPlayCellRect.origin.y + self.currentPlayCellRect.size.height;
+    CGFloat cellTop = self.currentPlayCellRect.origin.y;
+    //如果超过了当前的Cell
+    //向上滑动为正，向上滑动的距离超过了cell的底部
+    if (self.superTableView.contentOffset.y > cellBottom) {
+        if (!support) {
+            [self destructPlayer];
+            return;
+        }
+        [self adjustToSmallWindow];
+        return;
+    }
+    //contentOffset.y 超出（0，0）分界线向下滑动为负，否则向下依旧为正， 向上滑动为正
+    //超出自己所在的位置
+    if (cellTop > self.superTableView.contentOffset.y + self.superTableView.frame.size.height) {
+        if (!support) {
+            [self destructPlayer];
+            return;
+        }
+        [self adjustToSmallWindow];
+        return;
+    }
+    if (self.superTableView.contentOffset.y < cellBottom) {
+        if (!support) {
+            return;
+        }
+        [self gotoOriginalWindow];
+        return;
+    }
+    //在自己的范围内
+    if (cellTop < self.superTableView.contentOffset.y + self.superTableView.frame.size.height) {
+        if(!support) return;
+        [self gotoOriginalWindow];
+        return;
+    }
+}
+- (void)adjustToSmallWindow{
+    if ([self.superview isKindOfClass:[UIWindow class]])return;
+    self.smallWindowPlaying = YES;
+    self.playOrPauseButton.hidden = YES;
+    self.bottonBarView.hidden = YES;
+    //找到相对于keyWindow的坐标系
+    CGRect tableViewFrame = [self.superTableView convertRect:self.superTableView.bounds toView:self.keyWindow];
+    self.frame = [self convertRect:self.frame toView:self.keyWindow];
+    [self.keyWindow addSubview:self];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        CGFloat width = self.playerOriginalFrame.size.width * 0.5;
+        CGFloat height = self.playerOriginalFrame.size.height * 0.5;
+        CGRect smallWindowFrame = CGRectMake(tableViewFrame.origin.x + tableViewFrame.size.width - width, tableViewFrame.origin.y + tableViewFrame.size.height - height, width, height);
+        self.frame = smallWindowFrame;
+        self.playerLayer.frame = self.bounds;
+        self.indicatorView.center = CGPointMake(width / 2.0, height / 2.0);
+    }];
+    
+}
+- (void)gotoOriginalWindow{
+    if ([self.superview isKindOfClass:[UIWindow class]])return;
+    self.smallWindowPlaying = NO;
+    self.playOrPauseButton.hidden = NO;
+    self.bottonBarView.hidden = NO;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.frame = CGRectMake(self.currentPlayCellRect.origin.x, self.currentPlayCellRect.origin.y, self.playerOriginalFrame.size.width, self.playerOriginalFrame.size.height);
+        self.playerLayer.frame = self.bounds;
+        self.indicatorView.center = CGPointMake(self.playerOriginalFrame.size.width / 2.0, self.playerOriginalFrame.size.height / 2.0);
+    }completion:^(BOOL finished) {
+        self.frame = self.playerOriginalFrame;
+        UITableViewCell *cell = [self.superTableView cellForRowAtIndexPath:self.currentIndexPath];
+        [cell.contentView addSubview:self];
+    }];
 }
 - (void)addPlayerProgressObserver{
     AVPlayerItem *playerItem = self.player.currentItem;
@@ -344,6 +430,19 @@
         }
     }
 }
+#pragma mark --- App 通知 ---
+- (void)appWillResignActive:(NSNotification *)notification{
+    [self playOrPauseButtonClick:self.playOrPauseButton];
+}
+- (void)appBecomeActive:(NSNotification *)notification{
+    [self playOrPauseButtonClick:self.playOrPauseButton];
+}
+- (void)appWillEnterForeground:(NSNotification *)notification{
+    NSLog(@"appWillEnterForeground");
+}
+- (void)appDidEnterBackground:(NSNotification *)notification{
+    NSLog(@"appDidEnterBackground");
+}
 #pragma mark --- 懒加载 ---
 - (AVPlayerLayer *)playerLayer{
     if (!_playerLayer) {
@@ -419,6 +518,11 @@
     [self.playerItem removeObserver:self forKeyPath:@"status"];
     [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:[UIDevice currentDevice]];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     
 }
 @end
