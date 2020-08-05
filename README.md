@@ -7,10 +7,9 @@
 /// 播放器释放
 - (void)destructPlayer;
 /// videoURL 视频路径
-@property (nonatomic, strong)           NSString                                 * videoURL;
+- (void)setVideoURL:(NSString *)videoURL
 /** 视频的回调 */
-@property (nonatomic, copy)             SFVideoCompletedPlayingBlock             completedPlayingBlock;
-
+SFVideoCompletedPlayingBlock
 ```
 - 小屏播放
 ![小屏播放](B6E72FD36244D4CDB2604A39ADB7CA47.png)
