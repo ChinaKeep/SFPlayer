@@ -336,7 +336,7 @@
     
 }
 - (void)gotoOriginalWindow{
-    if ([self.superview isKindOfClass:[UIWindow class]])return;
+    if (![self.superview isKindOfClass:[UIWindow class]])return;
     self.smallWindowPlaying = NO;
     self.playOrPauseButton.hidden = NO;
     self.bottonBarView.hidden = NO;
