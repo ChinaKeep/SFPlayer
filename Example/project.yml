@@ -1,0 +1,23 @@
+name: SFPlayerDemo
+options:
+  deploymentTarget:
+    iOS: "12.0"
+targets:
+  SFPlayerDemo:
+    type: application
+    platform: iOS
+    sources:
+      - path: SFPlayerDemo
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.chinakeep.sfplayerdemo
+        PRODUCT_NAME: SFPlayerDemo
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_STYLE: Automatic
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 1.0
+        TARGETED_DEVICE_FAMILY: "1"
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: NO
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_NSAppTransportSecurity_NSAllowsArbitraryLoads: YES

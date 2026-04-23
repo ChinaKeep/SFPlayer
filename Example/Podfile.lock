@@ -1,0 +1,33 @@
+PODS:
+  - MJExtension (3.4.2)
+  - SDWebImage (5.21.7):
+    - SDWebImage/Core (= 5.21.7)
+  - SDWebImage/Core (5.21.7)
+  - SFPlayer/Container (1.0.2):
+    - SDWebImage (>= 5.8)
+    - SFPlayer/Core
+  - SFPlayer/Core (1.0.2):
+    - SFPlayer/UI
+  - SFPlayer/UI (1.0.2)
+
+DEPENDENCIES:
+  - MJExtension
+  - SFPlayer/Container (from `..`)
+
+SPEC REPOS:
+  trunk:
+    - MJExtension
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  SFPlayer:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  MJExtension: e97d164cb411aa9795cf576093a1fa208b4a8dd8
+  SDWebImage: e9fc87c1aab89a8ab1bbd74eba378c6f53be8abf
+  SFPlayer: 8951649400dbca074f1ec43c09efbbed7d085a75
+
+PODFILE CHECKSUM: d02dcfcc27f8701f47e2d0ac2a69c0d0aa7a4442
+
+COCOAPODS: 1.16.2

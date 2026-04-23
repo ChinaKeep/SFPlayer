@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SFPlayer'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'A lightweight custom video player based on AVFoundation.'
   s.description      = <<-DESC
 SFPlayer is a simple and customizable video player component for iOS projects.
@@ -12,49 +12,51 @@ SFPlayer is a simple and customizable video player component for iOS projects.
 
   s.platform         = :ios, '12.0'
   s.requires_arc     = true
+  s.module_name      = 'SFPlayer'
   s.frameworks       = 'UIKit', 'AVFoundation'
   s.default_subspecs = 'Core', 'Container'
 
   s.subspec 'UI' do |ui|
     ui.source_files = [
-      'SFPlayer/SFVideoPlayer/SFSlider.{h,m}',
-      'SFPlayer/SFVideoPlayer/SFBottonBarView.{h,m}'
+      'Sources/UI/SFSlider.{h,m}',
+      'Sources/UI/SFBottonBarView.{h,m}'
     ]
     ui.public_header_files = [
-      'SFPlayer/SFVideoPlayer/SFSlider.h',
-      'SFPlayer/SFVideoPlayer/SFBottonBarView.h'
+      'Sources/UI/SFSlider.h',
+      'Sources/UI/SFBottonBarView.h'
     ]
   end
 
   s.subspec 'Core' do |core|
     core.dependency 'SFPlayer/UI'
     core.source_files = [
-      'SFPlayer/SFVideoPlayer/SFPlayer.{h,m}',
-      'SFPlayer/SFVideoPlayer/SFPlayerConfiguration.{h,m}',
-      'SFPlayer/SFVideoPlayer/SFPlayerController.{h,m}',
-      'SFPlayer/SFVideoPlayer/SFPlayerComponentProtocols.h',
-      'SFPlayer/SFVideoPlayer/SFPlayerKit.h'
+      'Sources/Core/SFPlayer.{h,m}',
+      'Sources/Core/SFPlayerConfiguration.{h,m}',
+      'Sources/Core/SFPlayerController.{h,m}',
+      'Sources/Core/SFPlayerComponentProtocols.h',
+      'Sources/Core/SFPlayerKit.h'
     ]
     core.public_header_files = [
-      'SFPlayer/SFVideoPlayer/SFPlayer.h',
-      'SFPlayer/SFVideoPlayer/SFPlayerConfiguration.h',
-      'SFPlayer/SFVideoPlayer/SFPlayerController.h',
-      'SFPlayer/SFVideoPlayer/SFPlayerComponentProtocols.h',
-      'SFPlayer/SFVideoPlayer/SFPlayerKit.h'
+      'Sources/Core/SFPlayer.h',
+      'Sources/Core/SFPlayerConfiguration.h',
+      'Sources/Core/SFPlayerController.h',
+      'Sources/Core/SFPlayerComponentProtocols.h',
+      'Sources/Core/SFPlayerKit.h'
     ]
-    core.resources = ['SFPlayer/SFVideoPlayer/ImageResources.bundle']
+    core.resources = ['Sources/Resources/ImageResources.bundle']
   end
 
   s.subspec 'Container' do |container|
     container.dependency 'SFPlayer/Core'
     container.dependency 'SDWebImage', '>= 5.8'
     container.source_files = [
-      'SFPlayer/SFVideoPlayer/SFVideoModel.{h,m}',
-      'SFPlayer/SFVideoCell.{h,m}'
+      'Sources/Container/SFVideoModel.{h,m}',
+      'Sources/Container/SFVideoCell.{h,m}'
     ]
+    container.resources = ['Sources/Container/SFVideoCell.xib']
     container.public_header_files = [
-      'SFPlayer/SFVideoPlayer/SFVideoModel.h',
-      'SFPlayer/SFVideoCell.h'
+      'Sources/Container/SFVideoModel.h',
+      'Sources/Container/SFVideoCell.h'
     ]
   end
 

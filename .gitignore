@@ -1,0 +1,10 @@
+
+# CocoaPods
+Pods/
+Example/Pods/
+
+# Xcode user files
+**/xcuserdata/
+**/*.xcuserstate
+**/*.xcbkptlist
+.DS_Store
