@@ -1,5 +1,20 @@
 # SFPlayer
 ###一个基于AVFoundation的简易视频播放器，适合于简单视频播放和需要自定义播放器的项目
+
+## Installation
+
+### CocoaPods
+
+```ruby
+pod 'SFPlayer', '~> 1.0'
+```
+
+### Requirements
+
+- iOS 11.0+
+- ARC
+- Frameworks: `UIKit`, `AVFoundation`
+
 ##### 使用方法
 ```
 /// 播放或者暂停
