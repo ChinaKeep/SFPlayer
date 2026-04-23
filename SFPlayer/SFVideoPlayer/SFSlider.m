@@ -11,7 +11,7 @@
 // 滑动的距离
 static CGFloat panDistance;
 
-@interface SFLayerDelegate : NSObject
+@interface SFLayerDelegate : NSObject <CALayerDelegate>
 @property (nonatomic, assign)               CGFloat         centerY;
 ///滑动点的直径
 @property (nonatomic, assign)               CGFloat         sliderDiameter;

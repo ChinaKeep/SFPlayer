@@ -9,11 +9,22 @@
 pod 'SFPlayer', '~> 1.0'
 ```
 
+### Subspecs (Componentized)
+
+```ruby
+# Core player + default controls
+pod 'SFPlayer/Core'
+
+# Feed/list container helpers (depends on Core)
+pod 'SFPlayer/Container'
+```
+
 ### Requirements
 
-- iOS 11.0+
+- iOS 12.0+
 - ARC
 - Frameworks: `UIKit`, `AVFoundation`
+- `SDWebImage` (only required when using `Container`)
 
 ##### 使用方法
 ```

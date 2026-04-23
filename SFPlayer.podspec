@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'SFPlayer'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'A lightweight custom video player based on AVFoundation.'
   s.description      = <<-DESC
 SFPlayer is a simple and customizable video player component for iOS projects.
   DESC
   s.homepage         = 'https://github.com/ChinaKeep/SFPlayer'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Keep' => 'keep@example.com' }
+  s.author           = { 'Keep' => '1329905627@qq.com' }
   s.source           = { :git => 'https://github.com/ChinaKeep/SFPlayer.git', :tag => s.version.to_s }
 
   s.platform         = :ios, '12.0'

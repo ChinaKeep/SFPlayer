@@ -12,7 +12,7 @@
 typedef void(^BottomSliderChangeBlock)(SFSlider * _Nullable slider);
 typedef void(^BottomSliderFinishBlock)(SFSlider * _Nullable slider);
 typedef void(^BottomSliderDragBlock)(SFSlider * _Nullable slider);
-typedef void(^BottomFullScreenBtnBlock)(UIButton *fullScreenBtn);
+typedef void(^BottomFullScreenBtnBlock)(UIButton * _Nullable fullScreenBtn);
 
 NS_ASSUME_NONNULL_BEGIN
 

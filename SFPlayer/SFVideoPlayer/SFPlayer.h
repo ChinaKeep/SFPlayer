@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// videoURL 视频路径
 @property (nonatomic, strong)           NSString                                 * videoURL;
 /** 视频的回调 */
-@property (nonatomic, copy)             SFVideoCompletedPlayingBlock             completedPlayingBlock;
+@property (nullable, nonatomic, copy)   SFVideoCompletedPlayingBlock             completedPlayingBlock;
 /** 当前所在行*/
 @property (nonatomic, strong)           NSIndexPath                              * currentIndexPath;
 /** 当前所在父 UITableView */
